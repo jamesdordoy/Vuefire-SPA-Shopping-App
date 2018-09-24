@@ -1,6 +1,7 @@
 <template>
   <div>
     <shopping-list-items
+      @createItem="createItem"
       :items="shoppingList">
     </shopping-list-items>
   </div>
@@ -20,8 +21,8 @@ export default {
     shoppingList: shoppingListReference
   },
   methods: {
-    create() {
-      shoppingListReference.push({ 'hello': 'james' })
+    createItem(payload) {
+      shoppingListReference.push(payload)
     }
   }
 }

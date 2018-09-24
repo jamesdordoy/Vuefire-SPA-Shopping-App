@@ -2,7 +2,7 @@
     <nav class="flex items-center justify-between flex-wrap bg-blue-dark p-6">
         <div class="flex items-center flex-no-shrink text-white mr-6">
             <font-awesome-icon size="lg" icon="shopping-cart" />
-            <span class="ml-4 font-semibold text-xl tracking-tight">Simple Shopping List</span>
+            <span class="ml-4  text-xl ">Simple Shopping</span>
         </div>
         <div class="block lg:hidden">
             <button class="flex items-center px-3 py-2 border rounded text-blue-lighter border-blue-light hover:text-white hover:border-white">

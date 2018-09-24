@@ -2,7 +2,12 @@
   <div class="w-full">
     <div class="clearfix">
       <h2 class="mb-6 float-left">Shopping List</h2>
-      <button @click="showModal = true" class="float-right border">Create Shopping Item</button>
+
+      <outline-button
+        @click="showModal = true"
+        title="Create Shopping Item"
+        classes="float-right">
+      </outline-button>
     </div>
    
     <ul class="w-full list-reset">
@@ -15,16 +20,17 @@
       <div slot="body">
         <form>
           <form-group title="Name" for-id="name">
-            <text-input>
+            <text-input v-model="payload.name">
             </text-input>
           </form-group>
-          <form-group title="Description" for-id="name">
-            <text-input>
+          <form-group title="Description" for-id="description">
+            <text-input v-model="payload.description">
             </text-input>
           </form-group>
         </form>
       </div>
     </modal>
+    <vue-snotify></vue-snotify>
   </div>
 </template>
 
@@ -38,11 +44,23 @@ export default {
   data: function() {
     return {
       showModal: false,
+      payload: {
+        name: '',
+        description: '',
+      }
     };
   },
   methods: {
     createItem() {
-      this.$emit("createItem");
+      this.showModal = false;
+      this.$emit("createItem", this.payload);
+
+      this.$snotify.success('Example body content', 'Example title', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true
+      });
     }
   },
   components: {

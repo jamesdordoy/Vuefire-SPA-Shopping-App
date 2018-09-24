@@ -69,7 +69,7 @@ export default {
 }
 
 .modal-container {
-    z-index: 1000;
+  z-index: 1000;
   max-width: 600px;
   margin: 0px auto;
   padding: 20px 30px;

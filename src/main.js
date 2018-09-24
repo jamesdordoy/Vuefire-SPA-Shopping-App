@@ -16,6 +16,8 @@ library.add(faShoppingCart);
 Vue.use(VueRouter)
 Vue.use(VueFire)
 
+import Snotify from 'vue-snotify';
+Vue.use(Snotify)
 
 import './firebase';
 
@@ -25,6 +27,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 //Global Elements
 Vue.component('text-input', require('./elements/TextInput').default);
 Vue.component('form-group', require('./elements/FormGroup').default);
+Vue.component('outline-button', require('./elements/Button').default);
 
 Vue.config.productionTip = false
 
