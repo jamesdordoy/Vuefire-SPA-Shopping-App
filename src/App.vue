@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <shopping-list-items>
-    </shopping-list-items>
+    <navigation>
+    </navigation>
+    <div class="container mx-auto pt-8">
+      <shopping-list-items>
+      </shopping-list-items>
+    </div>
   </div>
 </template>
 
@@ -9,24 +13,15 @@
 import HelloWorld from './components/HelloWorld.vue'
 import Form from './components/Form.vue'
 import ShoppingListItems from './components/ShoppingItems';
+import Navigation from './components/Navigation';
 
 export default {
   name: 'app',
   components: {
     HelloWorld,
     Form,
-    ShoppingListItems
+    ShoppingListItems,
+    Navigation
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

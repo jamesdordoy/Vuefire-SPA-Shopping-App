@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="w-full">
     <h2 class="mb-6">Shopping List</h2>
-    <ul class="list-reset">
-        <shopping-list-item>
+    <ul class="w-full list-reset">
+        <shopping-list-item v-for="i in 3" :key="i">
         </shopping-list-item>
     </ul>
   </div>
