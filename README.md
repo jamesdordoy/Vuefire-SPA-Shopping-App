@@ -5,6 +5,11 @@
 npm install
 ```
 
+### Compiles tailwind assets
+```
+npm run tailwind
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
