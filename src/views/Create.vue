@@ -7,7 +7,7 @@
 
 <script>
 
-import CreateForm from './components/Form.vue'
+import CreateForm from '../components/Form.vue'
 
 export default {
   name: 'HelloWorld',

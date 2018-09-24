@@ -1,8 +1,8 @@
 export default [
     {
-        path: '/', component: require('./Home.vue').default
+        path: '/', component: require('./views/Home.vue').default
     },
     {
-        path: '/create', component: require('./Create.vue').default
+        path: '/create', component: require('./views/Create.vue').default
     },
 ];

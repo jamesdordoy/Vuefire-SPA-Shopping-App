@@ -1,26 +1,27 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import App from './App.vue';
+import VueRouter from 'vue-router';
 
 import routes from './routes.js';
 
-//Font Awesome
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faCoffee, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
 
-library.add(faCoffee)
-library.add(faShoppingCart)
-
-Vue.component('font-awesome-icon', FontAwesomeIcon)
-
-import VueRouter from 'vue-router'
+library.add(faCoffee);
+library.add(faShoppingCart);
 
 Vue.use(VueRouter)
+
+//Global Components
+Vue.component('font-awesome-icon', FontAwesomeIcon);
+
+//Global Elements
 
 Vue.config.productionTip = false
 
 const router = new VueRouter({
-  routes // short for `routes: routes`
+  routes
 })
 
 new Vue({

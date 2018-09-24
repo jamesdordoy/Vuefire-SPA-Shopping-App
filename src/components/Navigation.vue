@@ -11,9 +11,7 @@
         </div>
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
             <div class="text-sm lg:flex-grow">
-                <a target="_blank" href="https://jamesdordoy.co.uk" class="block mt-4 lg:inline-block lg:mt-0 text-blue-lighter hover:text-white mr-4">
-                    Author
-                </a>
+                
                 <router-link class="block mt-4 lg:inline-block lg:mt-0 text-blue-lighter hover:text-white mr-4" to="/">
                     Home
                 </router-link>
@@ -22,7 +20,11 @@
                 </router-link>
             </div>
             <div>
-            <a target="_blank" href="https://github.com/jamesdordoy/shopping-list" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue hover:bg-white mt-4 lg:mt-0">
+           
+            <a target="_blank" href="https://jamesdordoy.co.uk" class="block mt-4 lg:inline-block lg:mt-0 text-blue-lighter hover:text-white mr-4">
+                Author
+            </a>
+             <a target="_blank" href="https://github.com/jamesdordoy/shopping-list" class="no-underline inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue hover:bg-white mt-4 lg:mt-0">
                 View on GitHub
             </a>
             </div>

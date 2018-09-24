@@ -7,7 +7,7 @@
 
 <script>
 
-import ShoppingListItems from './components/ShoppingItems';
+import ShoppingListItems from '../components/ShoppingItems';
 
 export default {
   name: 'HelloWorld',
