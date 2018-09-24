@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import VueRouter from 'vue-router';
+import VueFire from 'vuefire'
 
 import routes from './routes.js';
 
@@ -12,6 +13,10 @@ library.add(faCoffee);
 library.add(faShoppingCart);
 
 Vue.use(VueRouter)
+Vue.use(VueFire)
+
+
+import './firebase';
 
 //Global Components
 Vue.component('font-awesome-icon', FontAwesomeIcon);
