@@ -1,6 +1,6 @@
 <template>
     <li class="w-full border mb-4 p-6 rounded-sm relative">
-        <h3>Item Name</h3>
+        <h3>{{ item.hello }}</h3>
 
         <h3>Note</h3>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit
@@ -9,3 +9,16 @@
         </button>
     </li>
 </template>
+
+<script>
+
+export default {
+    props: {
+        item: {
+            type: Object,
+            default: () => ({})
+        }
+    }
+}
+
+</script>

@@ -1,42 +1,57 @@
 <template>
   <div class="w-full">
-    <h2 class="mb-6">Shopping List</h2>
+    <div class="clearfix">
+      <h2 class="mb-6 float-left">Shopping List</h2>
+      <button @click="showModal = true" class="float-right border">Create Shopping Item</button>
+    </div>
+   
     <ul class="w-full list-reset">
-        <shopping-list-item v-for="i in 3" :key="i">
-        </shopping-list-item>
+      <shopping-list-item v-for="item in items" :key="item['.key']" :item="item">
+      </shopping-list-item>
     </ul>
+
+    <modal :show="showModal" @submit="createItem" @close="showModal = false">
+      <h1 slot="header">Create a Shopping Item</h1>
+      <div slot="body">
+        <form>
+          <form-group title="Name" for-id="name">
+            <text-input>
+            </text-input>
+          </form-group>
+          <form-group title="Description" for-id="name">
+            <text-input>
+            </text-input>
+          </form-group>
+        </form>
+      </div>
+    </modal>
   </div>
 </template>
 
 <script>
 
 import ShoppingListItem from './ShoppingItem';
+import Modal from './Modal';
 
 export default {
-  name: 'HelloWorld',
+  name: 'ShoppingList',
+  data: function() {
+    return {
+      showModal: false,
+    };
+  },
+  methods: {
+    createItem() {
+      this.$emit("createItem");
+    }
+  },
   components: {
-      ShoppingListItem
+    ShoppingListItem,
+    Modal,
   },
   props: {
-    msg: String
+    items: Array,
+    default: () => ([])
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <shopping-list-items>
+    <shopping-list-items
+      :items="shoppingList">
     </shopping-list-items>
   </div>
 </template>
@@ -14,9 +15,6 @@ export default {
   name: 'Home',
   components: {
     ShoppingListItems,
-  },
-  created: function() {
-    
   },
   firebase: {
     shoppingList: shoppingListReference

@@ -10,6 +10,7 @@ import { faCoffee, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 library.add(faCoffee);
+// library.add(faGithub);
 library.add(faShoppingCart);
 
 Vue.use(VueRouter)
@@ -22,6 +23,8 @@ import './firebase';
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 //Global Elements
+Vue.component('text-input', require('./elements/TextInput').default);
+Vue.component('form-group', require('./elements/FormGroup').default);
 
 Vue.config.productionTip = false
 
