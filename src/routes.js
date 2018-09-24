@@ -5,4 +5,7 @@ export default [
     {
         path: '/create', component: require('./views/Create.vue').default
     },
+    {
+        path: '/login', component: require('./views/Login.vue').default
+    },
 ];

@@ -4,4 +4,4 @@ import { config } from './env.js';
 let app = initializeApp(config.firebase);
 
 export const db = app.database();
-export const namesRef = db.ref('shopping-list');
+export const shoppingListReference = db.ref('shopping-list');
