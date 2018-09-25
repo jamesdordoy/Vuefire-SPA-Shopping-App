@@ -17,7 +17,10 @@ Vue.use(VueRouter)
 Vue.use(VueFire)
 
 import Snotify from 'vue-snotify';
-Vue.use(Snotify)
+Vue.use(Snotify);
+
+import Vuelidate from 'vuelidate';
+Vue.use(Vuelidate);
 
 import './firebase';
 
@@ -26,6 +29,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 //Global Elements
 Vue.component('text-input', require('./elements/TextInput').default);
+Vue.component('textarea-input', require('./elements/TextAreaInput').default);
 Vue.component('password-input', require('./elements/PasswordInput').default);
 Vue.component('form-group', require('./elements/FormGroup').default);
 Vue.component('outline-button', require('./elements/Button').default);

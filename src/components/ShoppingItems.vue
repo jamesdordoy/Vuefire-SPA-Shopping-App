@@ -15,7 +15,7 @@
       </shopping-list-item>
     </ul>
 
-    <modal :show="showModal" @submit="createItem" @close="showModal = false">
+    <modal :show="showModal" @close="showModal = false">
       <h1 slot="header">Create a Shopping Item</h1>
       <div slot="body">
         <form>
@@ -24,8 +24,10 @@
             </text-input>
           </form-group>
           <form-group title="Description" for-id="description">
-            <text-input v-model="payload.description">
-            </text-input>
+            <textarea-input
+              rows="5"
+              v-model="payload.description">
+            </textarea-input>
           </form-group>
         </form>
       </div>
