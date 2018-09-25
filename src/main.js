@@ -33,9 +33,47 @@ Vue.config.productionTip = false
 
 const router = new VueRouter({
   routes
+});
+
+import { auth } from './firebase'
+
+router.beforeEach((to, from, next) => {
+  //Check for required auth guard
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    //Check if not logged into firebase
+    if (!auth.currentUser) {
+      next({
+        path: '/login'
+      });
+    } else {
+      next();
+    }
+  } else if (to.matched.some(record => record.meta.requiresGuest)) {
+    // Check if NO logged user
+    if (auth.currentUser) {
+      next({
+        path: '/'
+      });
+    } else {
+      // Proceed to route
+      next();
+    }
+  } else {
+    // Proceed to route
+    next();
+  }
 })
 
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount('#app')
+let app;
+// eslint-disable-next-line
+auth.onAuthStateChanged(function(user) {
+  if (!app) {
+    /* eslint-disable no-new */
+    app = new Vue({
+      router,
+      render: h => h(App)
+    }).$mount('#app')
+  }
+});
+
+

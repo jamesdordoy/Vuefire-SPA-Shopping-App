@@ -13,16 +13,16 @@
         </div>
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
             <div class="text-sm lg:flex-grow"><!-- Links -->
-                <router-link class="block mt-4 lg:inline-block lg:mt-0 text-blue-lighter hover:text-white mr-4" to="/">
+                <router-link v-if="loggedIn" class="block mt-4 lg:inline-block lg:mt-0 text-blue-lighter hover:text-white mr-4" to="/">
                     Home
                 </router-link>
             </div>
             <div><!-- NavRight -->
-                <router-link class="block mt-4 lg:inline-block lg:mt-0 text-blue-lighter hover:text-white mr-4" to="/login">
+                <router-link v-if="!loggedIn" class="block mt-4 lg:inline-block lg:mt-0 text-blue-lighter hover:text-white mr-4" to="/login">
                     Login
                 </router-link>
-                <a target="_blank" href="https://jamesdordoy.co.uk" class="block mt-4 lg:inline-block lg:mt-0 text-blue-lighter hover:text-white mr-4">
-                    Author
+                <a @click="logout" v-if="loggedIn" href="#" class="block mt-4 lg:inline-block lg:mt-0 text-blue-lighter hover:text-white mr-4">
+                    Logout
                 </a>
                 <a target="_blank" href="https://github.com/jamesdordoy/shopping-list" class="no-underline inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue hover:bg-white mt-4 lg:mt-0">
                     View on GitHub
@@ -34,10 +34,28 @@
 
 <script>
 
+import { auth } from '../firebase'
+
 export default {
     data() {
         return {
             dropdown: false,
+            loggedIn: false,
+        }
+    },
+    created() {
+        if (auth.currentUser) {
+            this.loggedIn = true;
+            this.currentUser = auth.currentUser.email;
+        }
+    },
+    methods: {
+        logout() {
+            auth
+            .signOut()
+            .then(() => {
+                this.$router.go({ path: this.$router.path });
+            });
         }
     }
 }

@@ -8,24 +8,21 @@
         </router-view>
       </div>
     </div>
-    <div class="footer pin-b w-100 bg-blue-dark p-8">
-      <div class="flex mb-4">
-        <div class="w-1/3 bg-grey-light h-12"></div>
-        <div class="w-1/3 bg-grey h-12"></div>
-        <div class="w-1/3 bg-grey-light h-12"></div>
-      </div>
-    </div>
+    <site-footer>
+    </site-footer>
   </div>
 </template>
 
 <script>
 
 import Navigation from './components/Navigation';
+import SiteFooter from './components/Footer';
 
 export default {
   name: 'app',
   components: {
     Navigation,
+    SiteFooter
   },
 }
 </script>
