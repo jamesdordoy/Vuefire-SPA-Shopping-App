@@ -6,7 +6,7 @@
       <outline-button
         @click="showModal = true"
         title="Create Shopping Item"
-        classes="float-right">
+        classes="bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded float-right">
       </outline-button>
     </div>
    
@@ -61,7 +61,18 @@ export default {
         closeOnClick: false,
         pauseOnHover: true
       });
-    }
+    },
+    deleteItem() {
+      this.showModal = false;
+      this.$emit("createItem", this.payload);
+
+      this.$snotify.success('Example body content', 'Example title', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true
+      });
+    },
   },
   components: {
     ShoppingListItem,

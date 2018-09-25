@@ -10,7 +10,7 @@
 <script>
 
 import ShoppingListItems from '../components/ShoppingItems';
-import { shoppingListReference } from '../firebase';
+import { db } from '../firebase';
 
 export default {
   name: 'Home',
@@ -18,11 +18,11 @@ export default {
     ShoppingListItems,
   },
   firebase: {
-    shoppingList: shoppingListReference
+    shoppingList: db.ref('shopping-list')
   },
   methods: {
     createItem(payload) {
-      shoppingListReference.push(payload)
+      db.ref('shopping-list').push(payload)
     }
   }
 }

@@ -2,7 +2,7 @@
     <input
         @input="onInput"
         v-model="inputValue"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
+        class="shadow appearance-none border rounded w-full py-2 px-3 bg-grey-lighter text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
         :id="id"
         type="text"
         :placeholder="placeholder">
@@ -19,6 +19,13 @@ export default {
     data() {
         return {
             inputValue: '',
+        }
+    },
+    watch: {
+        value: {
+            handler(newVal) {
+                this.inputValue = newVal;
+            }
         }
     },
     props: {

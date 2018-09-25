@@ -6280,6 +6280,31 @@ table {
   * @import "utilities/skew-transforms";
   */
 
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 1000px) {
+  .nav {
+    height: 72px;
+    overflow: hidden;
+    -webkit-transition: height 1s;
+        -ms-transition: height 1s;
+       -moz-transition: height 1s;
+         -o-transition: height 1s;
+            transition: height 1s;
+  }
+
+  .nav-open {
+    height: auto;
+  }
+}
+
 .list-item-button {
 }
 

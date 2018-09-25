@@ -61,6 +61,33 @@
   * @import "utilities/skew-transforms";
   */
 
+html {
+    @apply h-full
+}
+
+body {
+    @apply flex flex-col
+}
+
+
+@media screen and (max-width: 1000px) {
+
+.nav {
+    height: 72px;
+    overflow: hidden;
+    -webkit-transition:height 1s;
+	-ms-transition:height 1s;
+	-moz-transition:height 1s;
+	-o-transition:height 1s;
+	transition:height 1s;
+}
+
+.nav-open {
+    height: auto;
+}
+
+}
+
 .list-item-button {
 
 }

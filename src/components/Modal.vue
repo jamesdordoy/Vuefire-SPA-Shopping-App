@@ -18,12 +18,18 @@
 
                     <div class="modal-footer">
                         <slot name="footer">
-                            <button class="modal-default-button" @click="submit">
-                                Submit
-                            </button>
-                            <button class="modal-default-button" @click="close">
-                                Close
-                            </button>
+                            <div class="clearfix">
+                                <outline-button
+                                    @click="close"
+                                    title="Close"
+                                    classes="float-left bg-transparent hover:bg-red text-red-dark font-semibold hover:text-white py-2 px-4 border border-red hover:border-transparent rounded">
+                                </outline-button>
+                                <outline-button
+                                    @click="submit"
+                                    title="Submit"
+                                    classes="float-right bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded">
+                                </outline-button>
+                            </div>
                         </slot>
                     </div>
                 </div>
