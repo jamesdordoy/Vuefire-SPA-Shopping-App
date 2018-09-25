@@ -6279,6 +6279,11 @@ table {
   * @import "utilities/background-patterns";
   * @import "utilities/skew-transforms";
   */
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+
+.font-noto {
+  font-family: 'Noto Sans', sans-serif;
+}
 
 html {
   height: 100%;

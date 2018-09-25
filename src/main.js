@@ -16,8 +16,12 @@ library.add(faShoppingCart);
 Vue.use(VueRouter)
 Vue.use(VueFire)
 
-import Snotify from 'vue-snotify';
-Vue.use(Snotify);
+import Snotify, { SnotifyPosition } from 'vue-snotify';
+Vue.use(Snotify, {
+  toast: {
+    position: SnotifyPosition.rightTop
+  }
+});
 
 import Vuelidate from 'vuelidate';
 Vue.use(Vuelidate);
@@ -29,6 +33,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 //Global Elements
 Vue.component('text-input', require('./elements/TextInput').default);
+Vue.component('email-input', require('./elements/TextInput').default);
 Vue.component('textarea-input', require('./elements/TextAreaInput').default);
 Vue.component('password-input', require('./elements/PasswordInput').default);
 Vue.component('form-group', require('./elements/FormGroup').default);
