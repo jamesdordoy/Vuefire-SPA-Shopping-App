@@ -16,6 +16,9 @@
                 <router-link v-if="loggedIn" class="block mt-4 lg:inline-block lg:mt-0 text-blue-lighter hover:text-white mr-4" to="/">
                     Home
                 </router-link>
+                <router-link v-if="loggedIn" class="block mt-4 lg:inline-block lg:mt-0 text-blue-lighter hover:text-white mr-4" to="/">
+                    Shopping Lists
+                </router-link>
             </div>
             <div><!-- NavRight -->
                 <router-link v-if="!loggedIn" class="block mt-4 lg:inline-block lg:mt-0 text-blue-lighter hover:text-white mr-4" to="/login">

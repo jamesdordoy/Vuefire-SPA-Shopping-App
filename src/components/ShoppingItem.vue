@@ -9,7 +9,7 @@
 
         <outline-button
             title="Purchased"
-            classes="absolute purchased-btn">
+            classes="absolute purchased-btn bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded">
         </outline-button>
     </li>
 </template>

@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="w-full m-auto max-w-xs">
-      <h2 class="my-20 text-center">Login to Simple Shopping</h2>
-      <form class="rounded px-8 pb-8 mb-4">
+      <h2 class="mt-16 text-center">Login to Simple Shopping</h2>
+      <form class="rounded px-8 pb-8 my-8">
         <div class="mb-4">
           <form-group title="Username" for-id="username">
             <text-input id="username" v-model="payload.username">
@@ -15,13 +15,13 @@
             </password-input>
           </form-group>
         </div>
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between mt-6">
           <button @click="login" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
             Sign In
           </button>
-          <a class="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" href="#">
+          <router-link class="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" to="#">
             Forgot Password?
-          </a>
+          </router-link>
         </div>
       </form>
       <p class="text-center text-grey text-xs">
@@ -33,6 +33,7 @@
 
 <script>
 import { auth } from '../firebase';
+// import { required, minLength, between } from 'vuelidate/lib/validators'
 
 export default {
   data() {
