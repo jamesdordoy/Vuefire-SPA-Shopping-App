@@ -5,6 +5,10 @@
 npm install
 ```
 
+```
+Rename /src/env.example.js to /src/env.js and add Firebase credentials
+```
+
 ### Compiles tailwind assets
 ```
 npm run tailwind
