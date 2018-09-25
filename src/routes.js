@@ -1,8 +1,23 @@
 export default [
     {
-        path: '/', component: require('./views/Home.vue').default
+        path: '/',
+        component: require('./views/Home.vue').default,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
-        path: '/create', component: require('./views/Create.vue').default
+        path: '/login',
+        component: require('./views/Login.vue').default,
+        meta: {
+            requiresGuest: true
+        }
+    },
+    {
+        path: '/:id',
+        component: require('./views/View.vue').default,
+        meta: {
+            requiresAuth: true
+        }
     },
 ];

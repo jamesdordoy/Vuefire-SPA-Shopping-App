@@ -1,42 +1,86 @@
 <template>
   <div class="w-full">
-    <h2 class="mb-6">Shopping List</h2>
+    <div class="clearfix">
+      <h2 class="mb-6 float-left">Shopping List</h2>
+
+      <outline-button
+        @click="showModal = true"
+        title="Create Shopping Item"
+        classes="bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded float-right">
+      </outline-button>
+    </div>
+   
     <ul class="w-full list-reset">
-        <shopping-list-item v-for="i in 3" :key="i">
-        </shopping-list-item>
+      <shopping-list-item v-for="item in items" :key="item['.key']" :item="item">
+      </shopping-list-item>
     </ul>
+
+    <modal :show="showModal" @submit="createItem" @close="showModal = false">
+      <h1 slot="header">Create a Shopping Item</h1>
+      <div slot="body">
+        <form>
+          <form-group title="Name" for-id="name">
+            <text-input v-model="payload.name">
+            </text-input>
+          </form-group>
+          <form-group title="Description" for-id="description">
+            <text-input v-model="payload.description">
+            </text-input>
+          </form-group>
+        </form>
+      </div>
+    </modal>
+    <vue-snotify></vue-snotify>
   </div>
 </template>
 
 <script>
 
 import ShoppingListItem from './ShoppingItem';
+import Modal from './Modal';
 
 export default {
-  name: 'HelloWorld',
+  name: 'ShoppingList',
+  data: function() {
+    return {
+      showModal: false,
+      payload: {
+        name: '',
+        description: '',
+      }
+    };
+  },
+  methods: {
+    createItem() {
+      this.showModal = false;
+      this.$emit("createItem", this.payload);
+
+      this.$snotify.success('Example body content', 'Example title', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true
+      });
+    },
+    deleteItem() {
+      this.showModal = false;
+      this.$emit("createItem", this.payload);
+
+      this.$snotify.success('Example body content', 'Example title', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true
+      });
+    },
+  },
   components: {
-      ShoppingListItem
+    ShoppingListItem,
+    Modal,
   },
   props: {
-    msg: String
+    items: Array,
+    default: () => ([])
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>

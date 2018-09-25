@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <create-form>
-    </create-form>
+  <div class="mx-auto">
+    <login-form>
+    </login-form>
   </div>
 </template>
 
 <script>
 
-import CreateForm from '../components/Form.vue'
+import LoginForm from '../components/LoginForm.vue'
 
 export default {
   name: 'HelloWorld',
@@ -15,7 +15,7 @@ export default {
     msg: String
   },
   components: {
-    CreateForm,
+    LoginForm,
   }
 }
 </script>

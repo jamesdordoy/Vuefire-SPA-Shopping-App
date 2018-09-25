@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import VueRouter from 'vue-router';
+import VueFire from 'vuefire'
 
 import routes from './routes.js';
 
@@ -9,22 +10,70 @@ import { faCoffee, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 library.add(faCoffee);
+// library.add(faGithub);
 library.add(faShoppingCart);
 
 Vue.use(VueRouter)
+Vue.use(VueFire)
+
+import Snotify from 'vue-snotify';
+Vue.use(Snotify)
+
+import './firebase';
 
 //Global Components
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 //Global Elements
+Vue.component('text-input', require('./elements/TextInput').default);
+Vue.component('form-group', require('./elements/FormGroup').default);
+Vue.component('outline-button', require('./elements/Button').default);
 
 Vue.config.productionTip = false
 
 const router = new VueRouter({
   routes
+});
+
+import { auth } from './firebase'
+
+router.beforeEach((to, from, next) => {
+  //Check for required auth guard
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    //Check if not logged into firebase
+    if (!auth.currentUser) {
+      next({
+        path: '/login'
+      });
+    } else {
+      next();
+    }
+  } else if (to.matched.some(record => record.meta.requiresGuest)) {
+    // Check if NO logged user
+    if (auth.currentUser) {
+      next({
+        path: '/'
+      });
+    } else {
+      // Proceed to route
+      next();
+    }
+  } else {
+    // Proceed to route
+    next();
+  }
 })
 
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount('#app')
+let app;
+// eslint-disable-next-line
+auth.onAuthStateChanged(function(user) {
+  if (!app) {
+    /* eslint-disable no-new */
+    app = new Vue({
+      router,
+      render: h => h(App)
+    }).$mount('#app')
+  }
+});
+
+

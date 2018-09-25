@@ -1,21 +1,29 @@
 <template>
   <div>
-      <shopping-list-items>
-      </shopping-list-items>
+    <shopping-list-items
+      @createItem="createItem"
+      :items="shoppingList">
+    </shopping-list-items>
   </div>
 </template>
 
 <script>
 
 import ShoppingListItems from '../components/ShoppingItems';
+import { db } from '../firebase';
 
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
+  name: 'Home',
   components: {
     ShoppingListItems,
+  },
+  firebase: {
+    shoppingList: db.ref('shopping-list')
+  },
+  methods: {
+    createItem(payload) {
+      db.ref('shopping-list').push(payload)
+    }
   }
 }
 </script>
