@@ -26,12 +26,15 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 //Global Elements
 Vue.component('text-input', require('./elements/TextInput').default);
+Vue.component('password-input', require('./elements/PasswordInput').default);
 Vue.component('form-group', require('./elements/FormGroup').default);
 Vue.component('outline-button', require('./elements/Button').default);
 
 Vue.config.productionTip = false
 
 const router = new VueRouter({
+  mode: "history",
+  base: "/",
   routes
 });
 
