@@ -1,32 +1,32 @@
+//Packages
 import Vue from 'vue';
 import App from './App.vue';
 import VueRouter from 'vue-router';
 import VueFire from 'vuefire'
-
-import routes from './routes.js';
-
+import Vuelidate from 'vuelidate';
+import Snotify, { SnotifyPosition } from 'vue-snotify';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faCoffee, faShoppingCart, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { library } from '@fortawesome/fontawesome-svg-core';
 
+//Moduals
+import routes from './routes.js';
+import { auth } from './firebase';
+
+//Font Awesome
 library.add(faCoffee);
 library.add(faTrash);
 library.add(faShoppingCart);
 
-Vue.use(VueRouter)
-Vue.use(VueFire)
-
-import Snotify, { SnotifyPosition } from 'vue-snotify';
+//Vue Plugins
+Vue.use(VueRouter);
+Vue.use(Vuelidate);
+Vue.use(VueFire);
 Vue.use(Snotify, {
   toast: {
     position: SnotifyPosition.rightTop
   }
 });
-
-import Vuelidate from 'vuelidate';
-Vue.use(Vuelidate);
-
-import './firebase';
 
 //Global Components
 Vue.component('font-awesome-icon', FontAwesomeIcon);
@@ -39,15 +39,13 @@ Vue.component('password-input', require('./elements/PasswordInput').default);
 Vue.component('form-group', require('./elements/FormGroup').default);
 Vue.component('outline-button', require('./elements/Button').default);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 const router = new VueRouter({
   mode: "history",
   base: "/",
   routes
 });
-
-import { auth } from './firebase'
 
 router.beforeEach((to, from, next) => {
   //Check for required auth guard
@@ -67,20 +65,16 @@ router.beforeEach((to, from, next) => {
         path: '/'
       });
     } else {
-      // Proceed to route
       next();
     }
   } else {
-    // Proceed to route
     next();
   }
 })
 
 let app;
-// eslint-disable-next-line
-auth.onAuthStateChanged(function(user) {
+auth.onAuthStateChanged(function() {
   if (!app) {
-    /* eslint-disable no-new */
     app = new Vue({
       router,
       render: h => h(App)
