@@ -13,7 +13,7 @@
                 </svg>
             </button>
         </div>
-        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div class="w-auto block flex-grow lg:flex lg:items-center lg:w-auto">
             <div class="text-sm lg:flex-grow"><!-- Links -->
                 <router-link v-if="loggedIn" class="block mt-4 lg:inline-block lg:mt-0 text-blue-lighter hover:text-white mr-4" to="/">
                     Home

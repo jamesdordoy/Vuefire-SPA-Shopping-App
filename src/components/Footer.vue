@@ -1,5 +1,5 @@
 <template>
-    <div class="footer pin-b w-100 bg-blue-dark p-8">
+    <div class="footer pin-b w-auto bg-blue-dark p-8">
         <div class="flex mb-4">
             <div class="w-1/3"></div>
             <div class="w-1/3"></div>

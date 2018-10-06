@@ -1,7 +1,9 @@
 <template>
-  <div class="w-full">
-    <div class="clearfix">
-      <h2 class="mb-6 float-left">Shopping List</h2>
+  <div class="w-auto">
+
+    <div class="clearfix mb-4">
+
+      <h2 class="mb-16 float-left">Shopping List</h2>
 
       <outline-button
         @click="showModal = true"
@@ -10,7 +12,7 @@
       </outline-button>
     </div>
    
-    <ul class="w-full list-reset">
+    <ul class="flex list-reset">
       <shopping-list-item v-for="item in items" :key="item['.key']" :item="item">
       </shopping-list-item>
     </ul>
@@ -32,6 +34,12 @@
             </textarea-input>
             <p v-if="!$v.payload.description.required" class="text-red text-xs italic">Please enter a Description</p>
             <p v-if="!$v.payload.description.minLength" class="text-red text-xs italic">Description is too short</p>
+          </form-group>
+          <form-group title="Files" for-id="files">
+            <label for="files" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              Add Files
+            </label>
+            <input type="file" @change="filesChanged" class="hidden" id="files" multiple>
           </form-group>
           <button
             type="submit"
@@ -61,7 +69,9 @@ export default {
       payload: {
         name: '',
         description: '',
-      }
+        files: [],
+      },
+      files: [],
     };
   },
   components: {
@@ -75,10 +85,13 @@ export default {
   methods: {
     createItem() {
       this.showModal = false;
-      this.$emit("createItem", this.payload);
+      this.$emit("createItem", this.payload, this.files);
 
       this.payload.name = '';
       this.payload.description = '';
+    },
+    filesChanged(e) {
+      this.files = e.target.files;
     },
   }, 
   validations: {

@@ -9,7 +9,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faCoffee, faShoppingCart, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-//Moduals
+//Local Scripts
 import routes from './routes.js';
 import { auth } from './firebase';
 
@@ -32,12 +32,13 @@ Vue.use(Snotify, {
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 //Global Elements
-Vue.component('text-input', require('./elements/TextInput').default);
-Vue.component('email-input', require('./elements/TextInput').default);
-Vue.component('textarea-input', require('./elements/TextAreaInput').default);
-Vue.component('password-input', require('./elements/PasswordInput').default);
-Vue.component('form-group', require('./elements/FormGroup').default);
-Vue.component('outline-button', require('./elements/Button').default);
+Vue.component('text-input',      require('./elements/TextInput').default);
+Vue.component('card',            require('./elements/Card').default);
+Vue.component('email-input',     require('./elements/TextInput').default);
+Vue.component('textarea-input',  require('./elements/TextAreaInput').default);
+Vue.component('password-input',  require('./elements/PasswordInput').default);
+Vue.component('form-group',      require('./elements/FormGroup').default);
+Vue.component('outline-button',  require('./elements/Button').default);
 
 Vue.config.productionTip = false;
 
@@ -81,5 +82,3 @@ auth.onAuthStateChanged(function() {
     }).$mount('#app')
   }
 });
-
-

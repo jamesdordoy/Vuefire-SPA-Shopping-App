@@ -1,9 +1,9 @@
 <template>
-  <div id="app" class="min-h-screen flex flex-col ">
+  <div id="app" class="min-h-screen flex flex-col master">
     <navigation>
     </navigation>
     <div class="flex-grow p-8 font-sans">
-      <div class="container mx-auto pt-8 flex-1">
+      <div class="pt-8 flex-1">
         <router-view>
         </router-view>
       </div>

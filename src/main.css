@@ -68,11 +68,11 @@
 }
   
 html {
-    @apply h-full
+    @apply h-full w-auto
 }
 
 body {
-    @apply flex flex-col
+    @apply flex flex-col w-auto
 }
 
 
@@ -101,4 +101,8 @@ body {
 .purchased-btn {
     top: 24px;
     right: 24px;
+}
+
+.master {
+    width: auto !important;
 }
