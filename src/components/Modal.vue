@@ -1,6 +1,6 @@
 |<template>
     <div class="modal-mask" @click="close" v-show="show" transition="modal">
-        <div class="modal-container" @click.stop>
+        <div class="modal-container" :class="sizeClass" @click.stop>
             <div class="modal-header">
                 <slot name="header">
                     default header
@@ -37,21 +37,42 @@
 <script>
 
 export default {
-    props: ['show'],
-    methods: {
-        close: function () {
-        this.$emit("close");
+    props: {
+        show: {
+            type: Boolean,
+            default: false,
         },
-        submit: function () {
+        size: {
+            type: String,
+            default: 'md',
+        }
+    },
+    methods: {
+        close() {
+            this.$emit("close");
+        },
+        submit() {
             this.$emit("submit");
         }
     },
-    ready: function () {
+    ready() {
         document.addEventListener("keydown", (e) => {
             if (this.show && e.keyCode == 27) {
                 this.close();
             }
         });
+    },
+    computed: {
+        sizeClass() {
+            var size = this.size;
+
+            return {
+                'modal-sm' : size == 'sm',
+                'modal-md' : size == 'md',
+                'modal-lg' : size == 'lg',
+                'modal-xl' : size == 'xl',
+            }
+        }
     }
 }
 
@@ -74,8 +95,23 @@ export default {
     transition: opacity .3s ease;
 }
 
+.modal-sm {
+    max-width: 576px;
+}
+
+.modal-md {
+    max-width: 768px;
+}
+
+.modal-lg {
+    max-width: 992px;
+}
+
+.modal-xl {
+    max-width: 1200px;
+}
+
 .modal-container {
-    max-width: 600px;
     margin: 15% auto;
     padding: 20px 30px;
     background-color: #fff;

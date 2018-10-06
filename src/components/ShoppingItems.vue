@@ -18,7 +18,7 @@
     <modal :show="showModal" @close="showModal = false">
       <h1 slot="header">Create a Shopping Item</h1>
       <div slot="body">
-        <form>
+        <form @submit.prevent="createItem">
           <form-group title="Name" for-id="name">
             <text-input v-model="payload.name">
             </text-input>
@@ -33,19 +33,17 @@
             <p v-if="!$v.payload.description.required" class="text-red text-xs italic">Please enter a Description</p>
             <p v-if="!$v.payload.description.minLength" class="text-red text-xs italic">Description is too short</p>
           </form-group>
+          <button
+            type="submit"
+            :class="{ 'opacity-50 cursor-not-allowed': $v.$invalid }"
+            :disabled="$v.$invalid"
+            class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            Submit
+          </button>
         </form>
       </div>
-      <div slot="footer">
-        <button
-          @click="createItem"
-          :class="{ 'opacity-50 cursor-not-allowed': $v.$invalid }"
-          :disabled="$v.$invalid"
-          class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-          Submit
-        </button>
-      </div>
+      <span slot="footer"></span>
     </modal>
-    <vue-snotify></vue-snotify>
   </div>
 </template>
 
@@ -66,34 +64,23 @@ export default {
       }
     };
   },
+  components: {
+    ShoppingListItem,
+    Modal,
+  },
+  props: {
+    items: Array,
+    default: () => ([])
+  },
   methods: {
     createItem() {
       this.showModal = false;
       this.$emit("createItem", this.payload);
 
-      this.$snotify.success(this.payload.name, 'Created', {
-        timeout: 2000,
-        showProgressBar: true,
-        closeOnClick: false,
-        pauseOnHover: true
-      });
+      this.payload.name = '';
+      this.payload.description = '';
     },
-    deleteItem() {
-      this.showModal = false;
-      this.$emit("createItem", this.payload);
-
-      this.$snotify.success('Example body content', 'Example title', {
-        timeout: 2000,
-        showProgressBar: true,
-        closeOnClick: false,
-        pauseOnHover: true
-      });
-    },
-  },
-  components: {
-    ShoppingListItem,
-    Modal,
-  },
+  }, 
   validations: {
     payload: {
       name: {
@@ -106,9 +93,5 @@ export default {
       }
     }
   },
-  props: {
-    items: Array,
-    default: () => ([])
-  }
 }
 </script>
