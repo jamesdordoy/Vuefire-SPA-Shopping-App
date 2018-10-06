@@ -41,6 +41,7 @@ export default {
       default: () => ({
         name: '',
         description: '',
+        files: []
       })
     },
     user: {

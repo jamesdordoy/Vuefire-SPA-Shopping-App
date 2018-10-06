@@ -39,14 +39,10 @@ export default {
               storage.ref('images/' + item['.key'] + "/" + file.name)
               .getDownloadURL()
               .then(response => {
-
-                console.log(response)
                 item.files.push(response);
               });
             });
           });
-
-          console.log(this.items);
         }
       }
       

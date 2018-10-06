@@ -87,6 +87,8 @@ export default {
       this.showModal = false;
       this.$emit("createItem", this.payload, this.files);
 
+      this.payload.files = [];
+
       this.payload.name = '';
       this.payload.description = '';
     },
