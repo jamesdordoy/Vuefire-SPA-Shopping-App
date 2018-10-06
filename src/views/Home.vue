@@ -21,11 +21,6 @@ export default {
   firebase: {
     shoppingList: db.ref('shopping-list')
   },
-  created() {
-    // console.log(this.$options.name)
-    // eslint-disable-next-line
-    console.log(process.env.VUE_APP_FIREBASE_API_KEY)
-  },
   methods: {
     createItem(payload) {
       db.ref('shopping-list').push(payload);
