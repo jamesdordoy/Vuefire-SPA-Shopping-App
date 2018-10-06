@@ -23,6 +23,8 @@ export default {
   },
   created() {
     // console.log(this.$options.name)
+    // eslint-disable-next-line
+    console.log(process.env.VUE_APP_FIREBASE_API_KEY)
   },
   methods: {
     createItem(payload) {
