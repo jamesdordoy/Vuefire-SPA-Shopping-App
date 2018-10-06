@@ -85,12 +85,21 @@ export default {
   methods: {
     createItem() {
       this.showModal = false;
+
+      for (let i = 0; i < this.files.length; i++) {
+        let uploadFile = this.files[i];
+        this.payload.files.push({
+          name: uploadFile.name
+        });
+      }
+
       this.$emit("createItem", this.payload, this.files);
 
       this.payload.files = [];
 
       this.payload.name = '';
       this.payload.description = '';
+      this.payload.files = [];
     },
     filesChanged(e) {
       this.files = e.target.files;

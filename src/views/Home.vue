@@ -34,7 +34,6 @@ export default {
           this.items = this.shoppingList;
 
           this.items.forEach(item => {
-
             item.files.forEach(file => {
               storage.ref('images/' + item['.key'] + "/" + file.name)
               .getDownloadURL()
@@ -48,19 +47,8 @@ export default {
       
     }
   },
-  created() {
-    //storage.ref('images/');
-
-  },
   methods: {
     createItem(payload, files) {
-
-      for (let i = 0; i < files.length; i++) {
-        let uploadFile = files[i];
-        payload.files.push({
-          name: uploadFile.name
-        });
-      }
 
       db.ref('shopping-list')
       .push(payload)
