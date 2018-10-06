@@ -35,6 +35,9 @@
             <p v-if="!$v.payload.description.required" class="text-red text-xs italic">Please enter a Description</p>
             <p v-if="!$v.payload.description.minLength" class="text-red text-xs italic">Description is too short</p>
           </form-group>
+          <div v-for="name in fileNames" :key="name">
+            <p>{{ name }}</p>
+          </div>
           <form-group title="Files" for-id="files">
             <label for="files" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
               Add Files
@@ -72,6 +75,7 @@ export default {
         files: [],
       },
       files: [],
+      fileNames: []
     };
   },
   components: {
@@ -103,6 +107,11 @@ export default {
     },
     filesChanged(e) {
       this.files = e.target.files;
+
+      for (let i = 0; i < this.files.length; i++) {
+        let uploadFile = this.files[i];
+        this.fileNames.push(uploadFile.name);
+      }
     },
   }, 
   validations: {

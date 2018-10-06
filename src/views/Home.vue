@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     createItem(payload, files) {
-
+      
       db.ref('shopping-list')
       .push(payload)
       .then(response => {

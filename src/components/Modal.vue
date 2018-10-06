@@ -1,6 +1,8 @@
 |<template>
     <div class="modal-mask" @click="close" v-show="show" transition="modal">
-        <div class="modal-container" :class="sizeClass" @click.stop>
+
+        <div class="modal-container relative" :class="sizeClass" @click="close">
+            <button class="absolute close-btn">X</button>
             <div class="modal-header">
                 <slot name="header">
                     default header
@@ -84,6 +86,12 @@ export default {
     box-sizing: border-box;
 }
 
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
 .modal-mask {
     position: fixed;
     z-index: 9998;
@@ -112,7 +120,7 @@ export default {
 }
 
 .modal-container {
-    margin: 15% auto;
+    margin: 10% auto;
     padding: 20px 30px;
     background-color: #fff;
     border-radius: 2px;
