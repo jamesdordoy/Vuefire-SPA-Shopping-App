@@ -17,14 +17,15 @@
                 <slot name="footer">
                     <div class="clearfix">
                         <outline-button
-                            @click="close"
-                            title="Close"
-                            classes="float-left bg-transparent hover:bg-red text-red-dark font-semibold hover:text-white py-2 px-4 border border-red hover:border-transparent rounded">
-                        </outline-button>
-                        <outline-button
                             @click="submit"
                             title="Submit"
-                            classes="float-right bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded">
+                            classes="float-left bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded">
+                        </outline-button>
+
+                        <outline-button
+                            @click="close"
+                            title="Close"
+                            classes="float-right bg-transparent hover:bg-red text-red-dark font-semibold hover:text-white py-2 px-4 border border-red hover:border-transparent rounded">
                         </outline-button>
                     </div>
                 </slot>
@@ -41,9 +42,8 @@ export default {
         close: function () {
         this.$emit("close");
         },
-        savePost: function () {
-        // Insert AJAX call here...
-        this.$emit("close");
+        submit: function () {
+            this.$emit("submit");
         }
     },
     ready: function () {

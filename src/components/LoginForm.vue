@@ -35,7 +35,8 @@
           <button
             type="submit"
             :class="{ 'opacity-50 cursor-not-allowed': $v.$invalid }"
-            :disabled="$v.$invalid" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            :disabled="$v.$invalid"
+            class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
             Sign In
           </button>
           <router-link class="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" to="#">
@@ -64,15 +65,15 @@ export default {
     };
   },
   validations: {
-      email: {
-          required,
-          email,
-          minLength: minLength(4)
-      },
-      password: {
-          required,
-          minLength: minLength(4)
-      }
+    email: {
+      required,
+      email,
+      minLength: minLength(4)
+    },
+    password: {
+      required,
+      minLength: minLength(4)
+    }
   },
   methods: {
     login() {

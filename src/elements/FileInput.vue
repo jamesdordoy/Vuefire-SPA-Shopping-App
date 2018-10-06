@@ -1,12 +1,11 @@
 <template>
-    <textarea
+    <input
         @input="onInput"
         v-model="inputValue"
         class="shadow appearance-none border rounded w-full py-2 px-3 bg-grey-lighter text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
         :id="id"
-        :rows="rows"
+        type="email"
         :placeholder="placeholder">
-    </textarea>
 </template>
 
 <style>
@@ -33,10 +32,6 @@ export default {
         value: {
             type: String,
             default: '',
-        },
-        rows: {
-            type: [Number, String],
-            default: 3,
         },
         placeholder: {
             type: String,

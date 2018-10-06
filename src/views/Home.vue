@@ -20,6 +20,9 @@ export default {
   firebase: {
     shoppingList: db.ref('shopping-list')
   },
+  created() {
+    // console.log(this.$options.name)
+  },
   methods: {
     createItem(payload) {
       db.ref('shopping-list').push(payload)

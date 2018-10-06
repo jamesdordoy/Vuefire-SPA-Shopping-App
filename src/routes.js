@@ -7,6 +7,13 @@ export default [
         }
     },
     {
+        path: '/shopping-lists',
+        component: require('./views/ShoppingLists.vue').default,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
         path: '/login',
         component: require('./views/Login.vue').default,
         meta: {

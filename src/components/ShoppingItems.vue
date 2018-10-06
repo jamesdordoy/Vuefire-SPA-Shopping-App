@@ -22,14 +22,27 @@
           <form-group title="Name" for-id="name">
             <text-input v-model="payload.name">
             </text-input>
+            <p v-if="!$v.payload.name.required" class="text-red text-xs italic">Please enter a Name.</p>
+            <p v-if="!$v.payload.name.minLength" class="text-red text-xs italic">Name is too short</p>
           </form-group>
           <form-group title="Description" for-id="description">
             <textarea-input
               rows="5"
               v-model="payload.description">
             </textarea-input>
+            <p v-if="!$v.payload.description.required" class="text-red text-xs italic">Please enter a Description</p>
+            <p v-if="!$v.payload.description.minLength" class="text-red text-xs italic">Description is too short</p>
           </form-group>
         </form>
+      </div>
+      <div slot="footer">
+        <button
+          @click="createItem"
+          :class="{ 'opacity-50 cursor-not-allowed': $v.$invalid }"
+          :disabled="$v.$invalid"
+          class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          Submit
+        </button>
       </div>
     </modal>
     <vue-snotify></vue-snotify>
@@ -40,6 +53,7 @@
 
 import ShoppingListItem from './ShoppingItem';
 import Modal from './Modal';
+import { required, minLength } from 'vuelidate/lib/validators';
 
 export default {
   name: 'ShoppingList',
@@ -57,7 +71,7 @@ export default {
       this.showModal = false;
       this.$emit("createItem", this.payload);
 
-      this.$snotify.success('Example body content', 'Example title', {
+      this.$snotify.success(this.payload.name, 'Created', {
         timeout: 2000,
         showProgressBar: true,
         closeOnClick: false,
@@ -79,6 +93,18 @@ export default {
   components: {
     ShoppingListItem,
     Modal,
+  },
+  validations: {
+    payload: {
+      name: {
+        required,
+        minLength: minLength(4)
+      },
+      description: {
+        required,
+        minLength: minLength(4)
+      }
+    }
   },
   props: {
     items: Array,

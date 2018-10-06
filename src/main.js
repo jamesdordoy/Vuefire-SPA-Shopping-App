@@ -6,11 +6,11 @@ import VueFire from 'vuefire'
 import routes from './routes.js';
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faCoffee, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee, faShoppingCart, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 library.add(faCoffee);
-// library.add(faGithub);
+library.add(faTrash);
 library.add(faShoppingCart);
 
 Vue.use(VueRouter)
